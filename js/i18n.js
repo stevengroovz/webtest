@@ -268,7 +268,7 @@
       wa: 'Bonjour Steve N, on aimerait beaucoup vous faire jouer !\n\nÉvénement / lieu : \nVille : \nDate : '
     }
   };
-  var EMAIL = 'stevenmusicmanagement@gmail.com';
+  var EMAIL = 'bookings@stevengroovz.com';
   var PHONE = '41782665996';
   var LANGS = ['en', 'es', 'fr'];
   var original = new Map();   // remembers the English version of every element

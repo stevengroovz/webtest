@@ -5,8 +5,8 @@ No build step. Two pages share the same styles, translations and images:
 
 | Address | File | For |
 |---|---|---|
-| `your-domain.com` | `index.html` | Fans: link in bio (music, studio clips, sets, shows, socials) |
-| `your-domain.com/presskit` | `presskit/index.html` | Promoters and bookers (send this link) |
+| `stevengroovz.com` | `index.html` | Fans: link in bio (music, studio clips, sets, shows, socials) |
+| `stevengroovz.com/presskit` | `presskit/index.html` | Promoters and bookers (send this link) |
 
 The fan page links to the press kit ("Press kit" button in the top bar + the band above the footer),
 and the press kit has a "Home" button in its top bar that goes back to the fan page.
@@ -32,14 +32,21 @@ GitHub Pages serves folders automatically: `presskit/index.html` becomes `/press
 > Heads-up: the address you used before now opens the **fan page**. From now on, send promoters
 > the `/presskit/` link.
 
-**Own domain (optional):** buy it at any registrar, then in the repo go to *Settings → Pages → Custom domain*,
-type it, and follow GitHub's DNS instructions. Tick *Enforce HTTPS* once it's available.
+## Domain: stevengroovz.com
+The pages already point to `https://stevengroovz.com` (link previews in WhatsApp / Instagram / Facebook,
+and the page address search engines use). To connect the domain to GitHub Pages:
 
-### After it's online (one small edit per page)
-Social apps (WhatsApp, Instagram, Facebook) need the full address of the preview image.
-In `index.html` **and** `presskit/index.html`, change `og:image` and `twitter:image`
-from `assets/img/…` / `../assets/img/…` to the full address, e.g.
-`https://your-domain.com/assets/img/og-steve-n.jpg`.
+1. In the repository: *Settings → Pages → Custom domain* → type `stevengroovz.com` → *Save*.
+   (GitHub adds a small `CNAME` file to the repository by itself; leave it there.)
+2. At the company where you bought the domain, open its DNS settings and add:
+   - four **A** records for `@` (the bare domain): `185.199.108.153`, `185.199.109.153`,
+     `185.199.110.153`, `185.199.111.153`
+   - one **CNAME** record for `www` pointing to `<your-github-username>.github.io`
+   Remove any other A / CNAME records for `@` and `www` that the registrar put there by default (parking page).
+   Leave the email (MX) records alone: they make bookings@stevengroovz.com work.
+3. Wait until GitHub shows a green check (minutes to a few hours), then tick *Enforce HTTPS*.
+
+Until the domain is connected, link previews show no image; everything else works on the github.io address.
 
 ## Fan page (`index.html`) — how to update it
 - **New release**: in the *Music* section, copy one `<a class="disc">` block, then change the Spotify link,
@@ -90,4 +97,4 @@ The switcher in the top-right corner translates the whole page without reloading
 - **DJ set**: replace the SoundCloud track URL inside the SoundCloud `<iframe>`; the artwork updates itself.
 - **Booking messages** (press kit): the Email and WhatsApp links contain the pre-filled text (URL-encoded).
 - **Cache**: after editing a CSS or JS file, raise its `?v=` number where it's linked
-  (`style.css?v=33`, `fan.css?v=8`, `i18n.js?v=11`, in both pages for shared files) so returning visitors get the new version.
+  (`style.css?v=33`, `fan.css?v=8`, `i18n.js?v=12`, in both pages for shared files) so returning visitors get the new version.
